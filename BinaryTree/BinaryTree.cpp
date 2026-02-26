@@ -99,3 +99,52 @@ int BinaryTree<T>::depthHelper(const Node* node) const
     int right = depthHelper(node->right);
     return 1 + std::max(left, right);
 }
+
+template <typename T>
+bool BinaryTree<T>::erase(const T& value)
+{
+        d_root = eraseHelper(d_root, value);
+        return true;    
+}
+
+template <typename T>
+typename BinaryTree<T>::Node* BinaryTree<T>::eraseHelper(Node* node, const T& value)
+{
+    if (node == nullptr) return nullptr;
+    if (value < node->value) {
+        node->left = eraseHelper(node->left, value);
+    }
+    else if (node->value < value) {
+        node->right = eraseHelper(node->right, value);
+    }
+    else {
+        if (node->left == nullptr) {
+            Node* rightChild = node->right;
+            delete node;
+            return rightChild;
+        }
+        if (node->right == nullptr) {
+            Node* leftChild = node->left;
+            delete node;
+            return leftChild;
+        }
+
+        Node* successor = findMinNode(node->right);
+        node->value = successor->value;
+        node->right = eraseHelper(node->right, successor->value);
+    }
+    return node;
+}
+
+template <typename T>
+typename BinaryTree<T>::Node* 
+BinaryTree<T>::findMinNode(Node* node) const
+{
+    if (node == nullptr) {
+        return nullptr;
+    }
+    while (node->left != nullptr) {
+        node = node->left;
+    }
+    return node;
+}
