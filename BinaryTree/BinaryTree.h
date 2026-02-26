@@ -25,6 +25,9 @@ class BinaryTree
     void preOrderTraversalHelper(const Node* root) const;
     void postOrderTraversalHelper(const Node* root) const;
     int depthHelper(const Node* node) const;
+
+    Node* eraseHelper(Node* node, const T& value);
+    Node* findMinNode(Node* node) const;
     private:
     Node* d_root;
 };
