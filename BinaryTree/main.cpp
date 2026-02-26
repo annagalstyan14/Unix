@@ -26,6 +26,14 @@ int main()
     tree.postOrderTraversal();
     std::cout << "\n";
 
+    std::cout << "Before erase 30:\n";
+    tree.inOrderTraversal(); std::cout << "\n";
+
+    tree.erase(30);
+
+    std::cout << "After erase 30:\n";
+    tree.inOrderTraversal(); std::cout << "\n"; 
+
     std::cout << "Maximum depth: " << tree.depth() << "\n";   // 3
 
     return 0;
