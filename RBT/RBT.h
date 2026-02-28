@@ -8,7 +8,7 @@ public:
 
     void insert(const T& value);
     bool erase(const T& value);
-
+    bool search(const T& value);
 private:
     struct Node {
         T value;
