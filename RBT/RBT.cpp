@@ -260,4 +260,15 @@ void RBT<T>::inorderHelper(Node* node) {
     inorderHelper(node->right);
 }
 
+template <typename T>
+bool RBT<T>::search(const T& value) {
+    Node* x = root;
+    while (x != NIL) {
+        if (value == x->value)      return true;
+        else if (value < x->value)  x = x->left;
+        else                        x = x->right;
+    }
+    return false;
+}
+
 template class RBT<int>;
