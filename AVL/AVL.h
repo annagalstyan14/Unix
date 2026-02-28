@@ -8,6 +8,7 @@ class AVL
     ~AVL();
     bool insert(const T& value);
     bool erase(const T& value);
+    bool search(const T& value);
     void inOrderTraversal() const;
     void preOrderTraversal() const;
     void postOrderTraversal() const;
