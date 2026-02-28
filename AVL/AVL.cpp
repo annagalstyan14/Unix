@@ -250,3 +250,13 @@ typename AVL<T>::Node* AVL<T>::eraseRecursive(
 
     return node;
 }
+
+bool AVL<T>::search(const T& value) {
+    Node* x = root;
+    while (x != nullptr) {
+        if (value == x->value)      return true;
+        else if (value < x->value)  x = x->left;
+        else                        x = x->right;
+    }
+    return false;
+}
